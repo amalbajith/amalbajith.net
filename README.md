@@ -1,1 +1,0 @@
-# amalbajith.net
