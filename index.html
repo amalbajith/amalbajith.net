@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Download Files</title>
-</head>
-<body>
-	<h1>Download Files</h1>
-	<p>Click on the links below to download files:</p>
-	<ul>
-		<li><a href="https://exe.io/buWidrN" download>Module 1 Graph Theory</a></li>
-	</ul>
-</body>
+  <head>
+    <title>My Video Website</title>
+    <style>
+      /* Style for the video player */
+      .video-player {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+      }
+      
+      .video-player video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to My Video Website</h1>
+    <div class="video-player">
+      <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </body>
 </html>
