@@ -3,141 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Reset default margin and padding */
+        :root {
+            --color-primary: #10a37f;
+            --color-n-200: #c2c8d0;
+            --color-n-300: #999;
+            --transition: 0.2s ease;
+            --br: 3.2px;
+        }
+
+        .form {
+            --spacing-default: 16px;
+            --spacing-top: var(--spacing-default);
+            --spacing-left: var(--spacing-default);
+            --spacing-right: var(--spacing-default);
+            --spacing-bottom: var(--spacing-default);
+            --spacing-top-offset: -0.7;
+            --spacing-left-offset: 0.5;
+            display: grid;
+            gap: 1rem;
+            margin-block: 4rem;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
         }
 
-        .header {
-            background-color: #007bff;
-            color: white;
+        .form-group {
+            position: relative;
+        }
+
+        input,
+        button[type="submit"] {
+            border-radius: var(--br);
+            padding-block: var(--spacing-top) var(--spacing-bottom);
+            padding-inline: var(--spacing-right) var(--spacing-left);
+            font: inherit;
+        }
+
+        .text-center {
             text-align: center;
-            padding: 10px;
+            color: #000;
         }
 
-        .header input[type="search"] {
-            padding: 6px 10px;
-            border: none;
-            border-radius: 20px;
-            margin: 10px;
-            width: 80%;
+        input {
+            display: block;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid var(--color-n-200);
+            transition: var(--transition);
         }
 
-        .chat-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 70vh;
+        input:focus {
+            outline: none;
+            border-color: var(--color-primary);
         }
 
-        .chat {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
+        label {
+            position: absolute;
+            top: var(--spacing-top);
+            left: var(--spacing-left);
+            color: var(--color-n-300);
+            font-size: 16px;
+            pointer-events: none;
+            transition: var(--transition);
         }
 
-        .contact-avatar {
-            text-align: center;
-            padding: 10px;
+        input:focus ~ label,
+        input:valid ~ label {
+            top: calc(var(--spacing-top) * var(--spacing-top-offset));
+            left: calc(var(--spacing-left) * var(--spacing-left-offset));
+            font-size: 15px;
+            background-color: #fff;
+            color: var(--color-primary);
+            padding-inline: 4px;
         }
 
-        .contact-avatar img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .message-thread {
-            padding: 10px;
-        }
-
-        .message {
-            margin: 10px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .incoming {
-            background-color: #f0f0f0;
-            text-align: left;
-        }
-
-        .outgoing {
-            background-color: #007bff;
-            color: white;
-            text-align: right;
-        }
-
-        .message-input {
-            background-color: white;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .message-input input[type="text"] {
-            flex: 1;
-            padding: 6px 10px;
-            border: none;
-            border-radius: 20px;
-            margin-right: 10px;
-        }
-
-        .message-input button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 6px 12px;
+        button[type="submit"] {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: #fff;
+            border-radius: 5px;
+            border: 0;
             cursor: pointer;
         }
 
-        .message-input button:hover {
-            background-color: #0056b3;
+        .link {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        p {
+            margin: 0;
         }
     </style>
-    <title>Google Messages</title>
 </head>
 <body>
-    <header class="header">
-        <h1>Messages</h1>
-        <input type="search" placeholder="Search...">
-    </header>
-
-    <div class="chat-container">
-        <div class="chat">
-            <div class="contact-avatar">
-                <img src="avatar.jpg" alt="Contact Avatar">
-            </div>
-            <div class="message-thread">
-                <div class="message incoming">
-                    <p>Hello!</p>
-                </div>
-                <div class="message outgoing">
-                    <p>Hi there!</p>
-                </div>
-                <!-- Add more messages here -->
-            </div>
+    <form class="form">
+        <header>
+            <h1 class="text-center">Login</h1>
+        </header>
+        <div class="form-group">
+            <input type="email" id="email" required>
+            <label for="email">Email address</label>
         </div>
-    </div>
-
-    <footer class="message-input">
-        <input type="text" placeholder="Type a message...">
-        <button>Send</button>
-    </footer>
-
-    <script>
-        // You can add JavaScript functionality here if needed
-    </script>
+        <div class="form-group">
+            <input type="password" id="password" required>
+            <label for="password">Password</label>
+        </div>
+        <p><a class="link" href="#">Forgot password?</a></p>
+        <button type="submit">Contnue</button>
+        <p class="text-center">Don't have an account?
+            <a class="link" href="#">Sign up</a>
+        </p>
+    </form>
 </body>
 </html>
